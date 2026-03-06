@@ -1,0 +1,62 @@
+services:
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - red-publica
+      - red-privada
+    restart: always
+
+  php:
+    build: .
+    container_name: php
+    volumes:
+      - ./html:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - red-privada
+    restart: always
+
+  mi-db:
+    image: mysql:8.0
+    container_name: mi-db
+    env_file:
+      - .env
+    volumes:
+      - datos-mysql:/var/lib/mysql
+    networks:
+      - red-privada
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    env_file:
+      - .env
+    depends_on:
+      - mi-db
+    networks:
+      - red-publica
+      - red-privada
+    restart: always
+
+networks:
+  red-publica:
+    driver: bridge
+  red-privada:
+    driver: bridge
+    internal: true
+
+volumes:
+  datos-mysql:
