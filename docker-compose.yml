@@ -3,11 +3,6 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
-    read_only: true
-    tmpfs:
-      - /tmp
-      - /var/cache/nginx
-      - /var/run
     ports:
       - "8080:80"
     volumes:
@@ -19,8 +14,6 @@ services:
       - red-publica
       - red-privada
     restart: always
-    mem_limit: 256m
-    cpus: '0.5'
 
   php:
     build: .
@@ -32,8 +25,6 @@ services:
     networks:
       - red-privada
     restart: always
-    mem_limit: 256m
-    cpus: '0.5'
 
   mi-db:
     image: mysql:8.0
@@ -45,8 +36,6 @@ services:
     networks:
       - red-privada
     restart: always
-    mem_limit: 512m
-    cpus: '1.0'
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -61,8 +50,6 @@ services:
       - red-publica
       - red-privada
     restart: always
-    mem_limit: 256m
-    cpus: '0.5'
 
 networks:
   red-publica:
