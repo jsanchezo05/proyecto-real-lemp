@@ -5,7 +5,7 @@
     <title>Mi Proyecto Real</title>
 </head>
 <body>
-    <h1>¡Bienvenido a mi proyecto real!</h1>
+    <h1>¡Bienvenido desde main!</h1>
     
     <?php
     // Información del servidor
