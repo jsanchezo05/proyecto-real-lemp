@@ -5,7 +5,7 @@
     <title>Mi Proyecto Real</title>
 </head>
 <body>
-    <h1>¡Bienvenido a mi proyecto real!</h1>
+    <h1>¡Bienvenido desde la rama feature!</h1>
     
     <?php
     // Información del servidor
