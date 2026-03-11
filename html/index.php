@@ -25,5 +25,8 @@
         echo "<p style='color:green'>✅ Base de datos: Conectada correctamente</p>";
     }
     ?>
+    <footer>
+       <p>© 2026 Mi Empresa - Todos los derechos reservados</p>
+    </footer>
 </body>
 </html>
